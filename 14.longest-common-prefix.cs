@@ -49,6 +49,30 @@
 public class Solution {
     public string LongestCommonPrefix(string[] strs) {
         
+        // Sort the array first so that shortest is first and longest is last
+        Array.Sort(strs);
+
+        // Compare the first and last words, because the longest prefix would have to be
+        // the length of the shortest word. The longest word needs to be compared to see
+        // how long the prefix actually is
+
+        string firstWord = strs.First();
+        string lastWord = strs.Last();
+
+        string prefixResult = "";
+
+        // Compare the characters of the first word to the last word
+        for(int i = 0; i < firstWord.Length; i++){
+            if(firstWord[i] == lastWord[i]){
+                prefixResult += firstWord[i];
+            }
+            else{
+                break;
+            }
+        }
+
+        return prefixResult;
+
     }
 }
 // @lc code=end
